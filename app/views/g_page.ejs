@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%-(include('layouts/header')); -%>
+  <body>
+    <!-- Navigation-->
+    <%-(include('layouts/navbar')); -%>
+    <!-- Page Header-->
+    <header class="masthead">
+      <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+          <div class="col-md-10 col-lg-8 col-xl-7">
+            <div class="page-heading">
+              <h1>G Drive Test</h1>
+              <span class="subheading">DriveTest booking Kiosk</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Post Content-->
+    <main class="mb-4">
+      <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+          <div class="col-md-10 col-lg-8 col-xl-7">
+            <div class="my-5">
+             
+              <br />
+              <% if(g2_info) { %>
+              <form action="/updateinfo/<%= g2_info._id %>" method="POST">
+                <div class="post-preview">
+                  <h2 class="post-title">Personal Information</h2>
+                  <br />
+                  <h5 class="post-subtitle">First Name:</h5>
+                  <div class="form-floating">
+                    <input
+                      class="form-control"
+                      id="fname"
+                      type="text"
+                      placeholder="Enter your first name..."
+                      data-sb-validations="required"
+                      name="firstName"
+                      value="<%= g2_info.firstName %>"
+                      disabled
+                    />
+                    <label for="fname"><%= g2_info.firstName %></label>
+                    <!-- <div class="invalid-feedback" data-sb-feedback="fname:required">First name is required.</div> -->
+                  </div>
+                  <br />
+                  <h5 class="post-subtitle">Last Name:</h5>
+                  <div class="form-floating">
+                    <input
+                      class="form-control"
+                      id="lname"
+                      type="text"
+                      placeholder="Enter your last name..."
+                      data-sb-validations="required"
+                      name="lastName"
+                      value="<%= g2_info.lastName %>"
+                      disabled
+                    />
+                    <label for="lname"><%= g2_info.lastName %></label>
+                    <!-- <div class="invalid-feedback" data-sb-feedback="lname:required">Last name is required.</div> -->
+                  </div>
+                  <br />
+                  <h5 class="post-subtitle">License Number:</h5>
+                  <div class="form-floating">
+                    <input
+                      class="form-control"
+                      id="license"
+                      type="text"
+                      pattern="[a-zA-Z0-9 ]{8}"
+                      title="must be 8 characters"
+                      placeholder="Enter your license number..."
+                      data-sb-validations="required"
+                      name="licenseNo"
+                      value="<%= g2_info.licenseNo %>"
+                      disabled
+                    />
+                    <label for="license"><%= g2_info.licenseNo %></label>
+                    <!-- <div class="invalid-feedback" data-sb-feedback="license:required">License is required.</div> -->
+                  </div>
+                  <br />
+                  <h5 class="post-subtitle">Age:</h5>
+                  <div class="form-floating">
+                    <input
+                      class="form-control"
+                      id="age"
+                      type="number"
+                      placeholder="Enter your Age..."
+                      data-sb-validations="required"
+                      name="age"
+                      value="<%= g2_info.age %>"
+                      disabled
+                    />
+                    <label for="age"><%= g2_info.age %></label>
+                    <!-- <div class="invalid-feedback" data-sb-feedback="age:required">Age is required.</div> -->
+                  </div>
+                  <br />
+                  <br />
+                  <h2 class="post-title">Car Information</h2>
+                  <br />
+                  <h5 class="post-subtitle">Make:</h5>
+                  <div class="form-floating">
+                    <input
+                      class="form-control"
+                      id="make"
+                      type="text"
+                      placeholder="Enter your last name..."
+                      data-sb-validations="required"
+                      name="make"
+                      value="<%= g2_info.car_details.make %>"
+                      required
+                    />
+                    <label for="make">Make</label>
+                  </div>
+                  <br />
+                  <h5 class="post-subtitle">Model:</h5>
+                  <div class="form-floating">
+                    <input
+                      class="form-control"
+                      id="model"
+                      type="text"
+                      placeholder="Enter your last name..."
+                      data-sb-validations="required"
+                      name="model"
+                      value="<%= g2_info.car_details.model %>"
+                      required
+                    />
+                    <label for="model">Model</label>
+                  </div>
+                  <br />
+                  <h5 class="post-subtitle">Year:</h5>
+                  <div class="form-floating">
+                    <input
+                      class="form-control"
+                      id="year"
+                      type="number"
+                      placeholder="Enter your license number..."
+                      data-sb-validations="required"
+                      name="year"
+                      value="<%= g2_info.car_details.year %>"
+                      required
+                    />
+                    <label for="year">Year</label>
+                    <div
+                      class="invalid-feedback"
+                      data-sb-feedback="license:required"
+                    >
+                      License is required.
+                    </div>
+                  </div>
+                  <br />
+                  <h5 class="post-subtitle">Plat No:</h5>
+                  <div class="form-floating">
+                    <input
+                      class="form-control"
+                      id="plat"
+                      type="text"
+                      placeholder="Enter your last name..."
+                      data-sb-validations="required"
+                      name="platNo"
+                      value="<%= g2_info.car_details.platNo %>"
+                      required
+                    />
+                    <label for="plat">Plat No</label>
+                    <div
+                      class="invalid-feedback"
+                      data-sb-feedback="age:required"
+                    >
+                      Age is required.
+                    </div>
+                  </div>
+                  <br />
+                  <div class="form-group">
+                    <button
+                      type="submit"
+                      class="btn btn-primary"
+                      id="submitButton"
+                    >
+                      Submit
+                    </button>
+                  </div>
+                  <br />
+                  <h2 class="post-title">Book an Appointment</h2>
+                  <h5 class="post-subtitle">Appointment has been Booked</h5>
+                </div>
+                <div class="form-group d-grid gap-2">
+                  <button
+                    type="submit"
+                    class="btn btn-success"
+                    id="generateInvoiceBtn"
+                  >
+                    Generate Invoice in PDF
+                  </button>
+                </div>
+              </form>
+              <% } else if(g2_info === null && submitrequest === true) { %>
+              <div class="alert alert-warning" role="alert">G2 Details not added.</div>
+              <a href="/g2_page" class="btn btn-secondary"
+                >Go Back to G2 Page</a
+              >
+              <% } %>
+              <!-- Pager -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Footer-->
+    <%-(include('layouts/footer')); -%>
+
+    <!-- Bootstrap core JS-->
+    <%-(include('layouts/scripts')); -%>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const generateInvoiceBtn = document.getElementById('generateInvoiceBtn');
+        
+        generateInvoiceBtn.addEventListener('click', function(event) {
+          event.preventDefault(); // Prevent default button behavior
+    
+          // Extract the relevant data from the page
+          const g2_info = {
+            firstName: document.getElementById('fname').value,
+            lastName: document.getElementById('lname').value,
+            licenseNo: document.getElementById('license').value,
+            age: document.getElementById('age').value,
+            car_details: {
+              make: document.getElementById('make').value,
+              model: document.getElementById('model').value,
+              year: document.getElementById('year').value,
+              platNo: document.getElementById('plat').value
+            }
+            // Add any other necessary fields
+          };
+    
+          // Send an AJAX request to the server to generate PDF
+          fetch('/generate-invoice', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              g2_info: g2_info // Include the g2_info data in the request body
+            })
+          })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.blob();
+          })
+          .then(blob => {
+            // Create a blob URL for the generated PDF
+            const url = window.URL.createObjectURL(blob);
+    
+            // Create a temporary link element to trigger the download
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'invoice.pdf';
+            document.body.appendChild(a);
+            a.click();
+    
+            // Cleanup
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+          })
+          .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+          });
+        });
+      });
+    </script>
+    
+  </body>
+</html>

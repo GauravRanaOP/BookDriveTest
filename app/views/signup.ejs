@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%-(include('layouts/header')); -%>
+  <body>
+    <!-- Navigation-->
+    <%-(include('layouts/navbar')); -%>
+    <!-- Page Header-->
+    <div class="wrapper container" style="margin-top: 10rem;">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <h2 class="text-center text-dark mt-5">Register</h2>
+          <% if(errors != null && errors.length > 0){ %>
+            <ul class="list-group"></ul>
+            <% for (var i = 0; i < errors.length; i++) { %>
+            <li class="list-group-item list-group-item-danger"><%=
+            errors[i] %></li>
+            <% } %>
+            </ul>
+            <% } %>
+            <div class="card my-5">
+          <form class="card-body cardbody-color p-lg-5" action="/register/cardetails" method="POST">
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label>User Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="UserName"
+                  id="username"
+                  name="username"
+                  required
+                />
+              </div>
+              <div class="invalid-feedback">Please enter a username.</div>
+            </div>
+            <br />
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label>Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  placeholder="Password"
+                  id="password"
+                  name="password"
+                  required
+                  minlength="6"
+                />
+              </div>
+              <div class="invalid-feedback">
+                Please enter a password (at least 6 characters).
+              </div>
+            </div>
+            <br />
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label>Confirm Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  placeholder="Password"
+                  id="confirmpassword"
+                  name="confirmpassword"
+                  required
+                  minlength="6"
+                  data-match="#password"
+                  data-match-error="Passwords do not match."
+                />
+              </div>
+              <div class="invalid-feedback">
+                Please confirm your password (at least 6 characters).
+              </div>
+            </div>
+            <br />
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label>User Type</label>
+                <select class="form-control" id="userType" name="userType">
+                  <option value="Driver">Driver</option>
+                  <option value="Examiner">Examiner</option>
+                  <option value="Admin">Admin</option>
+                </select>
+                <div class="invalid-feedback">Please select a user type.</div>
+              </div>
+            </div>
+            <br />
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-primary">Register</button>
+
+              <div class="text-center">
+                <h5 style="margin-top: 30px;">Already have an account?</h5>
+              </div>
+              <a href="/login" class="btn btn-outline-secondary">Login</a>
+            </div>
+            </div>
+          </form>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Post Content -->
+
+    <hr />
+
+    <!-- Footer-->
+    <!-- <%-(include('layouts/footer')); -%> -->
+
+    <!-- Bootstrap core JS-->
+    <%-(include('layouts/scripts')); -%>
+  </body>
+</html>

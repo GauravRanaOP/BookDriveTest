@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%-(include('layouts/header')); -%>
+  <body>
+    <!-- Navigation-->
+    <%-(include('layouts/navbar')); -%>
+    <!-- Page Header-->
+    <header class="masthead">
+      <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+          <div class="col-md-10 col-lg-8 col-xl-7">
+            <div class="page-heading">
+              <h1>Examiner</h1>
+              <span class="subheading">DriveTest booking Kiosk</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section class="container">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <% if(details && details.length > 0){ %>
+                <h1>Personal Details</h1>
+                  <% details.forEach(function(detail) { %>
+                    <h4>FirstName: <%= detail.firstName %></h4>
+                    <h4>LastName: <%= detail.lastName %></h4>
+                    <h4>License Number: <%= detail.licenseNo %></h4>
+                    <h4>Age: <%= detail.age %></h4>
+                    <h4>Appointment Date: <%= detail.appointmentid.date %></h4>
+                    <h4>Appointment Time: <%= detail.appointmentid.time %></h4>
+                    <form action="/appointments/<%= detail._id %>" method="post">
+                        <div class="mb-3">
+                          <label for="comments" class="form-label">Comments:</label>
+                          <textarea class="form-control" id="comments" name="comments" rows="3"></textarea>
+                        </div>
+                        <!-- Pass and Fail buttons -->
+                        <button type="submit" name="result" value="pass" class="btn btn-success">Pass</button>
+                        <button type="submit" name="result" value="fail" class="btn btn-danger">Fail</button>
+                      </form>
+                    <br><br>
+                  <% }); %>
+              <% } else { %>
+                <p>No details available</p>
+              <% } %>
+        </div>
+      </div>
+    </section>
+
+    <!-- Post Content -->
+
+    <hr />
+
+    <!-- Footer-->
+    <%-(include('layouts/footer')); -%>
+
+    <!-- Bootstrap core JS-->
+    <%-(include('layouts/scripts')); -%>
+  </body>
+</html>

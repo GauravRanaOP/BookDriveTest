@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%-(include('layouts/header')); -%>
+  <body>
+    <!-- Navigation-->
+    <%-(include('layouts/navbar')); -%>
+    <!-- Page Header-->
+    <header class="masthead">
+      <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+          <div class="col-md-10 col-lg-8 col-xl-7">
+            <div class="page-heading">
+              <h1>Appointment</h1>
+              <span class="subheading">DriveTest booking Kiosk</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section class="container">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <form action="/saveApt" method="POST">
+            <div class="post-preview">
+              <h2 class="post-title">Booking Information</h2>
+              <br />
+              <label for="aptdate">Choose a date for Appointment:</label>
+              <input
+                type="date"
+                id="aptdate"
+                name="date"
+                min="<%= new Date().toISOString().split('T')[0] %>"
+                value="<%= dateprovided %>"
+                required
+              />
+              <br />
+              <br />
+              <label for="apttime">Choose a time for Appointment:</label>
+              <select id="apttime" name="time" required>
+                <option value="">Select a time</option>
+                <% if(times) { %>
+                  <option value="09:00" <% if (times.includes('09:00')) { %>disabled<% } %>>09:00 AM</option>
+                  <option value="09:30" <% if (times.includes('09:30')) { %>disabled<% } %>>09:30 AM</option>
+                  <option value="10:00" <% if (times.includes('10:00')) { %>disabled<% } %>>10:00 AM</option>
+                  <option value="10:30" <% if (times.includes('10:30')) { %>disabled<% } %>>10:30 AM</option>
+                  <option value="11:00" <% if (times.includes('11:00')) { %>disabled<% } %>>11:00 AM</option>
+                  <option value="11:30" <% if (times.includes('11:30')) { %>disabled<% } %>>11:30 AM</option>
+                  <option value="12:00" <% if (times.includes('12:00')) { %>disabled<% } %>>12:00 PM</option>
+                  <option value="12:30" <% if (times.includes('12:30')) { %>disabled<% } %>>12:30 PM</option>
+                  <option value="01:00" <% if (times.includes('13:00')) { %>disabled<% } %>>1:00 PM</option>
+                  <option value="01:30" <% if (times.includes('13:30')) { %>disabled<% } %>>1:30 PM</option>
+                  <option value="02:00" <% if (times.includes('14:00')) { %>disabled<% } %>>2:00 PM</option>
+              <% }  %>
+
+            </select>
+              <br /><br />
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary" id="submitButton">
+                  Book Time Slot
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Post Content -->
+
+    <hr />
+
+    <!-- Footer-->
+    <%-(include('layouts/footer')); -%>
+
+    <!-- Bootstrap core JS-->
+    <%-(include('layouts/scripts')); -%>
+
+    <script>
+      document.getElementById("aptdate").addEventListener("change", function () {
+        const selectedDate = this.value;
+        console.log("Selected date:", selectedDate);
+        // Reload the page with the selected date as a query parameter
+        window.location.href = "/availableDate?date=" + selectedDate;
+      });
+    </script>
+  </body>
+</html>

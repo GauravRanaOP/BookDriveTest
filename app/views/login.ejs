@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%-(include('layouts/header')); -%>
+  <body>
+    <!-- Navigation-->
+    <%-(include('layouts/navbar')); -%>
+    <!-- Page Header-->
+    <!-- <header class="masthead">
+      <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+          <div class="col-md-10 col-lg-8 col-xl-7">
+            <div class="page-heading">
+              <h1>Login</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header> -->
+    <div class="wrapper container" style="margin-top: 10rem;">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <h1 class="text-center text-dark mt-5">Login</h1>
+          <div class="card my-5">
+            <form
+              class="card-body cardbody-color p-lg-5"
+              action="/users/login"
+              method="POST"
+            >
+              <div class="control-group">
+                <div class="form-group floating-label-form-group controls">
+                  <label>User Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="UserName"
+                    id="username"
+                    name="username"
+                    required
+                  />
+                </div>
+              </div>
+              <br />
+              <div class="control-group">
+                <div class="form-group floating-label-form-group controls">
+                  <label>Password</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    placeholder="Password"
+                    id="password"
+                    name="password"
+                    required
+                  />
+                </div>
+              </div>
+              <br />
+              <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-success">
+                  Sign In
+                </button>
+                
+                <div class="text-center">
+                  <h5 style="margin-top: 30px;">Don't have an account?</h5>
+                </div>
+                <a href="/register" class="btn btn-outline-secondary">Register</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Post Content -->
+
+    <hr />
+
+    <!-- Footer-->
+    <%-(include('layouts/footer')); -%>
+
+    <!-- Bootstrap core JS-->
+    <%-(include('layouts/scripts')); -%>
+  </body>
+</html>

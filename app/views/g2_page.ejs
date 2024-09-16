@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%-(include('layouts/header')); -%>
+  <body>
+    <!-- Navigation-->
+    <%-(include('layouts/navbar')); -%>
+    <!-- Page Header-->
+    <!-- <header class="masthead">
+      <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+          <div class="col-md-10 col-lg-8 col-xl-7">
+            <div class="page-heading">
+              <h1>G2 Drive Test</h1>
+              <span class="subheading">DriveTest booking Kiosk</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header> -->
+    <!-- Post Content-->
+    <main class="row g-2 p-3" style="margin-top: 5rem;">
+      <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+          <div class="col-md-10 col-lg-8 col-xl-7">
+            <div class="my-5">
+              <br />
+              <% if(g2_info) { console.log(g2_info)%>
+              <form action="/updateinfoGTwo/<%= g2_info._id %>" method="POST">
+                <div class="post-preview">
+                  <h3 class="display-5 fw-bolder sm-1">
+                    <span class="text-gradient d-inline">Personal Information </span>
+                  </h3>
+                  <br />
+                  <h5 class="post-subtitle">First Name:</h5>
+                  <div class="form-floating">
+                    <input class="form-control" id="fname" type="text"
+                    placeholder="Enter your first name..."
+                    data-sb-validations="required" name="firstName" <% if
+                    (g2_info.licenseNo != 'Default') { %> disabled <% } %>
+                    />
+                    <label for="fname"><%= g2_info.firstName %></label>
+                    <!-- <div class="invalid-feedback" data-sb-feedback="fname:required">First name is required.</div> -->
+                  </div>
+                  <br />
+                  <h5 class="post-subtitle">Last Name:</h5>
+                  <div class="form-floating">
+                    <input class="form-control" id="lname" type="text"
+                    placeholder="Enter your last name..."
+                    data-sb-validations="required" name="lastName" 
+                    <% if
+                    (g2_info.licenseNo !== 'Default') { %> disabled <% } %>
+                    />
+                    <label for="lname"><%= g2_info.lastName %></label>
+                    <!-- <div class="invalid-feedback" data-sb-feedback="lname:required">Last name is required.</div> -->
+                  </div>
+                  <br />
+                  <h5 class="post-subtitle">License Number:</h5>
+                  <div class="form-floating">
+                    <input class="form-control" id="license" type="text"
+                    pattern="[a-zA-Z0-9 ]{8}" title="must be 8 characters"
+                    placeholder="Enter your license number..."
+                    data-sb-validations="required" name="licenseNo" <% if
+                    (g2_info.licenseNo !== 'Default') { %> disabled <% } %>
+                    />
+                    <label for="license"><%= g2_info.licenseNo %></label>
+                    <!-- <div class="invalid-feedback" data-sb-feedback="license:required">License is required.</div> -->
+                  </div>
+                  <br />
+                  <h5 class="post-subtitle">Age:</h5>
+                  <div class="form-floating">
+                    <input class="form-control" id="age" type="number"
+                    placeholder="Enter your Age..."
+                    data-sb-validations="required" name="age" <% if
+                    (g2_info.licenseNo !== 'Default') { %> disabled <% } %>
+                    />
+                    <label for="age"><%= g2_info.age %></label>
+                    <!-- <div class="invalid-feedback" data-sb-feedback="age:required">Age is required.</div> -->
+                  </div>
+                  <br />
+                  <br />
+                  <h3 class="display-5 fw-bolder sm-1">
+                    <span class="text-gradient d-inline">Car Information</span>
+                  </h3>
+                  <br />
+                  <h5 class="post-subtitle">Make:</h5>
+                  <div class="form-floating">
+                    <input
+                      class="form-control"
+                      id="make"
+                      type="text"
+                      placeholder="Enter your last name..."
+                      data-sb-validations="required"
+                      name="make"
+                      value="<%= g2_info.car_details.make %>"
+                      required
+                    />
+                    <label for="make">Make</label>
+                  </div>
+                  <br />
+                  <h5 class="post-subtitle">Model:</h5>
+                  <div class="form-floating">
+                    <input
+                      class="form-control"
+                      id="model"
+                      type="text"
+                      placeholder="Enter your last name..."
+                      data-sb-validations="required"
+                      name="model"
+                      value="<%= g2_info.car_details.model %>"
+                      required
+                    />
+                    <label for="model">Model</label>
+                  </div>
+                  <br />
+                  <h5 class="post-subtitle">Year:</h5>
+                  <div class="form-floating">
+                    <input
+                      class="form-control"
+                      id="year"
+                      type="number"
+                      placeholder="Enter your license number..."
+                      data-sb-validations="required"
+                      name="year"
+                      value="<%= g2_info.car_details.year %>"
+                      required
+                    />
+                    <label for="year">Year</label>
+                    <div
+                      class="invalid-feedback"
+                      data-sb-feedback="license:required"
+                    >
+                      License is required.
+                    </div>
+                  </div>
+                  <br />
+                  <h5 class="post-subtitle">Plat No:</h5>
+                  <div class="form-floating">
+                    <input
+                      class="form-control"
+                      id="plat"
+                      type="text"
+                      placeholder="Enter your last name..."
+                      data-sb-validations="required"
+                      name="platNo"
+                      value="<%= g2_info.car_details.platNo %>"
+                      required
+                    />
+                    <label for="plat">Plat No</label>
+                    <div
+                      class="invalid-feedback"
+                      data-sb-feedback="age:required"
+                    >
+                      Age is required.
+                    </div>
+                  </div>
+
+                  <br>
+                  <br>
+                  <h3 class="display-5 fw-bolder sm-1">
+                    <span class="text-gradient d-inline">Licence Fees </span>
+                  </h3>
+                  <br />
+                  <div class="animation">
+                  <h5 class="post-subtitle" >Fees:</h5>
+                    <label for="fees"><%= g2_info.fees %></label>
+                  </div>
+                    <!-- <div class="invalid-feedback" data-sb-feedback="fname:required">First name is required.</div> -->
+                  <br />
+                  <br />
+                  <h3 class="display-5 fw-bolder sm-1">
+                    <span class="text-gradient d-inline">Book An Appointment </span>
+                  </h3>
+                  <br>
+                  <% if(g2_info.appointmentid === null) { %>
+                  <label for="aptdate" style="margin-bottom: 10px;">Choose a date for Booking:</label>
+                  <br>
+              <input
+                    
+                type="date"
+                id="aptdate"
+                name="date"
+                min="<%= new Date().toISOString().split('T')[0] %>"
+                onchange="handleDateSelection()"
+                required
+              />
+              <br>
+              <br>
+              <label for="appointmentTime" style="margin-bottom:10px ;">Choose a time for Booking:</label>
+              <br>
+              <select id="appointmentTime" name="appointmentTime" required>
+              </select>
+              <% } else{ %>                  
+                <h5 class="post-subtitle">Appointment has been Booked</h5>
+                <% } %>
+
+
+              <br>
+              <br>
+                  <div class="form-group d-grid gap-2">
+                    <button
+                      type="submit"
+                      class="btn btn-success"
+                      id="submitButton"
+                    >
+                      Submit
+                    </button>
+                  </div>
+                </div>
+              </form>
+              <% } else if(g2_info === null && submitrequest === true) { %>
+              <div class="alert alert-warning" role="alert">
+                G2 Details not found
+              </div>
+              <a href="/g_page" class="btn btn-secondary">Redirect to G Page</a>
+              <% } %>
+              <!-- Pager -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Footer-->
+    <%-(include('layouts/footer')); -%>
+
+    <!-- Bootstrap core JS-->
+    <%-(include('layouts/scripts')); -%>
+    
+    <script>
+  function handleDateSelection() {
+    const selectedDate = document.getElementById('aptdate').value;
+
+    fetch(`/g2_date?date=${selectedDate}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    .then(response => response.json())
+    .then(data => {
+      const selectElement = document.getElementById('appointmentTime');
+      selectElement.innerHTML = '';
+
+      data.forEach(time => {
+        const option = document.createElement('option');
+        option.text = time;
+        selectElement.add(option);
+      });
+    })
+    .catch(error => console.error('Error:', error));
+  }
+</script>
+  </body>
+</html>

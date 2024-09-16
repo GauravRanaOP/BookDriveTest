@@ -1,0 +1,65 @@
+<nav class="navbar navbar-expand-sm" style="background-image: linear-gradient(to right, #ffffff, #747474, #3b3b3b, #1f1f1f, #000000);" id="mainNav">
+  <div class="container px-4 px-lg-5">
+    <a class="navbar-brand" href="/dashboard">
+      <img src="/assets/img/logo (2).png" alt="Logo" width="75" height="70" class="d-inline-block align-text-top">
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarResponsive"
+      aria-controls="navbarResponsive"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      Menu
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ms-auto py-4 py-lg-0">
+        <% if(loggedIn) { %>
+        <li class="nav-item">
+          <a class="nav-link px-lg-3 py-3 py-lg-4" href="/dashboard"
+            >Dashboard</a
+          >
+        </li>
+        <% if(userType === 'Driver') { %>
+        <li class="nav-item">
+          <a class="nav-link px-lg-3 py-3 py-lg-4" href="/g2_page">G2 Test</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-lg-3 py-3 py-lg-4" href="/g_page">Driver Details</a>
+        </li>
+        <% } %> <% if(userType === 'Admin') { %>
+        <li class="nav-item">
+          <a class="nav-link px-lg-3 py-3 py-lg-4" href="/appointment"
+            >Appointment</a
+          >
+        </li>
+        <% } %> <% if(userType === 'Examiner') { %>
+          <li class="nav-item">
+            <a class="nav-link px-lg-3 py-3 py-lg-4" href="/examiner"
+              >Examiner</a
+            >
+          </li>
+          <% } %>
+  
+        <li class="nav-item">
+          <a class="nav-link px-lg-3 py-3 py-lg-4" href="/auth/logout"
+            >Log out</a
+          >
+        </li>
+        <% } %> <% if(!loggedIn) { %>
+        <li class="nav-item">
+          <a class="nav-link px-lg-3 py-3 py-lg-4" href="/dashboard"
+            >Dashboard</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-lg-3 py-3 py-lg-4" href="/login">Login</a>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+</nav>
